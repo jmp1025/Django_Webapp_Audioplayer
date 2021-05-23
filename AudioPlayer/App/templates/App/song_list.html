@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Croissant+One&family=Fugaz+One&family=Gruppo&family=Montserrat&display=swap" rel="stylesheet">
+  <link href="{% static './style.css' %}" rel="stylesheet"/>
+  <title>Song List</title>
+</head>
+
+<body>
+  <header>
+    <img src="{% static "images/mimelight.png" %}" alt="">
+  </header>
+
+  <h1 style="font-size: 36px">Song List</h1>
+  {% for song in object_list %}
+    <p style="font-size: 18px">{{ song.title }} - {{ song.duration }}</p>
+  {% endfor %}
+
+  <div class="home_link">
+    <h1><a href="/home">Home</a></h1>
+  </div>
+
+
+</body>
