@@ -1,0 +1,100 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Croissant+One&family=Fugaz+One&family=Gruppo&family=Montserrat&display=swap" rel="stylesheet">
+  <link href="{% static './style.css' %}" rel="stylesheet"/>
+  <title>Mimelight Player</title>
+</head>
+
+<body>
+  <header>
+    <img src="{% static "images/mimelight.png" %}" alt="">
+  </header>
+
+  <h1 id="band_header">Meet the Band</h1>
+  <div id="band_members">
+    <div id="cliff_jesse" class="doubles">
+      <div id="cliff" class="singles">
+        <h2>Cliff</h2>
+        <p>Singer/Rythmn Guitar</p>
+        <img src="{% static "images/cliff.png" %}" alt="cliff" class="singles_img">
+      </div>
+      <div id="jesse" class="singles">
+        <h2>Jesse</h2>
+        <p>Drummer</p>
+        <img src="{% static "images/jesse.png" %}" alt="jesse" class="singles_img">
+      </div>
+    </div>
+    <div id="dion_ryan" class="doubles">
+      <div id="dion" class="singles">
+        <h2>Dion</h2>
+        <p>Singer/Lead Guitar</p>
+        <img src="{% static "images/dion.png" %}" alt="dion" class="singles_img">
+      </div>
+      <div id="ryan" class="singles">
+        <h2>Ryan</h2>
+        <p>Bass Guitar</p>
+        <img src="{% static "images/ryan.png" %}" alt="ryan" class="singles_img">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="music-player">
+      {% for item in page_obj %}
+      <div class="cover">
+        <img alt="" src="{{item.image.url}}"/>
+      </div>
+      <div class="title">
+        <h3>{{item.artist}}</h3>
+        <h1>{{item.title}}</h1>
+      </div>
+      <center>
+        <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}">
+          <i class="fa fa-step-backward fa-2x"></i>
+        </a> &nbsp; &nbsp; &nbsp;
+        <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }} {% endif %}">
+          <i class="fa fa-step-forward fa-2x"></i>
+        </a>
+      </center>
+      <div class="lecteur">
+        <audio class="fc-media" style="width: 100%;">
+          <source src="{% if item.audio_file %}{{item.audio_file.url}} {% else %} {{item.audio_link}} {% endif %}" type="audio/mp3"/>
+        </audio>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <footer>
+    <h1 id="footer_header">Follow Us At</h1>
+    <div class="links">
+      <a class="left_icon" href="https://www.facebook.com/Mimelightmusic/">
+        <img src="{% static "images/facebook.png" %}" alt="facebook" class="icons">
+      </a>
+      <a class="center_icon" href="https://www.instagram.com/mimelightmusic/?hl=en">
+        <img src="{% static "images/instagram.png" %}" alt="instagram" class="icons">
+      </a>
+      <a class="right_icon" href="https://twitter.com/mimelightmusic">
+        <img src="{% static "images/twitter.png" %}" alt="twitter" class="icons">
+      </a>
+    </div>
+    <div>
+      <p id="copyright">
+        Copyright 2021 by Mimelight. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelement-and-player.min.js"></script>
+  <script src="{% static './script.js' %}"></script>
+</body>
+
+</html>
