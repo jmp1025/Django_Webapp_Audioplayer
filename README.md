@@ -8,13 +8,11 @@ In order to view the pages you must enter this command prompt within your projec
 python manage.py runserver
 
 Once your server is up and running copy this code with the desired path to view you work:
-http://127.0.0.1:8000/...
+* http://127.0.0.1:8000/...
 
 Url paths for the project:
-http://127.0.0.1:8000/home/
-http://127.0.0.1:8000/songs/
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running (starting the server and navigating through the web pages) and a walkthrough of the code.}
+* http://127.0.0.1:8000/home/
+* http://127.0.0.1:8000/songs/
 
 [Software Demo Video](https://www.youtube.com/watch?v=4dAp6daDs8I)
 
